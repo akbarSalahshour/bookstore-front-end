@@ -1,0 +1,46 @@
+
+@import '~assets/scss/variable.scss';
+@import '~assets/scss/functions.scss';
+@import '~assets/scss/mixins.scss';
+@import '~assets/scss/default.scss';
+
+body{
+    direction: rtl;
+	text-align: right;
+	background-color: $white;
+    .container{
+        overflow: hidden;
+    }
+}
+
+a{
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+
+.cpo{
+    cursor: pointer !important;
+}
+
+.outline-none{
+    outline: none !important;
+}
+.border-none{
+    border:none ;
+}
+@include font-size();
+@include font-weight();
+@include rounded();
+@each $index , $breakpoint in $breakpoint-default {
+    @media screen and #{$breakpoint}{
+        @include font-size($index);
+    }
+}
+
+
+.scroll-hide::-webkit-scrollbar{
+	display: none;
+}

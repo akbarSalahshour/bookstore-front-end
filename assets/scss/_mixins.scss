@@ -1,0 +1,72 @@
+@import '~assets/scss/default.scss';
+
+
+/***********************************************FONT SIZE************************************************/
+@mixin font_size($type: '') {
+
+  // px  => from 8 through 30
+  $important: '';
+
+  @if($type !='') {
+    $important: '!important';
+  }
+
+  @for $font_size from 8 through 30 {
+    .font#{$type}-#{$font_size} {
+      font-size: #{$font_size}px #{$important};
+    }
+  }
+
+  // vw  => from 1 through 10
+  @for $font_size from 1 through 10 {
+    .font#{$type}-#{$font_size}vw {
+      font-size: #{$font_size}vw #{$important};
+    }
+  }
+
+  // em  => from 0.1 through 2.0
+  // rem => from 0.1 through 2.0
+  $font_size: 0.1;
+
+  @while $font_size <=2 {
+    .font#{$type}-#{$font_size * 10}em {
+      font-size: #{$font_size}em #{$important};
+    }
+
+    .font#{$type}-#{$font_size * 10}rem {
+      font-size: #{$font_size}rem #{$important};
+    }
+
+    $font_size: $font_size+0.1;
+  }
+}
+
+/***********************************************FONT SIZE************************************************/
+/***********************************************FONT WEIGHT************************************************/
+@mixin  font-weight(){
+    @for $font_weight from 1 through 10{
+        .font-#{$font_weight * 100}{
+            font-weight: #{$font_weight * 100};
+        }
+    }
+}
+
+/***********************************************FONT WEIGHT************************************************/
+/***********************************************BORDER RADIUS************************************************/
+@mixin rounded(){
+    @for $border_radius from 1 through 20{
+        .rounded-#{$border_radius}{
+            border-radius: #{$border_radius}px;
+        }
+        .rounded-#{$border_radius}em{
+            border-radius: #{$border_radius}em;
+        }
+        .rounded-#{$border_radius}rem{
+            border-radius: #{$border_radius}rem;
+        }
+    }
+}
+/***********************************************BORDER RADIUS************************************************/
+/***********************************************************************************************/
+/***********************************************************************************************/
+/***********************************************************************************************/
