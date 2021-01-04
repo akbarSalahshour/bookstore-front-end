@@ -1,46 +1,58 @@
+@import "~assets/scss/variable.scss";
+@import "~assets/scss/mixins.scss";
+@import "~assets/scss/default.scss";
 
-@import '~assets/scss/variable.scss';
-@import '~assets/scss/functions.scss';
-@import '~assets/scss/mixins.scss';
-@import '~assets/scss/default.scss';
-
-body{
-    direction: rtl;
+body {
+	direction: rtl;
 	text-align: right;
 	background-color: $white;
-    .container{
-        overflow: hidden;
-    }
+	.container {
+		overflow: hidden;
+	}
 }
 
-a{
-    text-decoration: none;
-    &:hover{
-        text-decoration: none;
-    }
+a {
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
 }
 
-
-.cpo{
-    cursor: pointer !important;
+.cpo {
+	cursor: pointer !important;
 }
 
-.outline-none{
-    outline: none !important;
+.outline-none {
+	outline: none !important;
 }
-.border-none{
-    border:none ;
+.border-none {
+	border: none;
 }
 @include font-size();
 @include font-weight();
 @include rounded();
-@each $index , $breakpoint in $breakpoint-default {
-    @media screen and #{$breakpoint}{
-        @include font-size($index);
-    }
+@each $index, $breakpoint in $breakpoint-default {
+	@media screen and #{$breakpoint} {
+		@include font-size($index);
+	}
 }
 
-
-.scroll-hide::-webkit-scrollbar{
+.scroll-hide::-webkit-scrollbar {
 	display: none;
+}
+
+.webkit-scrollbar::-webkit-scrollbar {
+	width: 8px;
+	height: 12px;
+}
+.webkit-scrollbar::-webkit-scrollbar-thumb {
+	background-color: #bfbfbf;
+}
+.webkit-scrollbar::-webkit-scrollbar {
+	background-color: #ececec;
+}
+
+.overflow-y {
+	overflow-y: auto;
+	overflow-x: hidden;
 }
