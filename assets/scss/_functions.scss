@@ -1,0 +1,19 @@
+@import "~assets/scss/default.scss";
+@import "~assets/scss/variable.scss";
+
+@function calcSidebarPaperHeight($panel-height: $panel-header-height, $sidebar-height: $sidebar-header-height) {
+	@return calc(100vh - #{$panel-height} - #{$sidebar-height});
+}
+@function calcMainWidth($sidebar-height: $sidebar-header-height) {
+	@return calc(100vw - #{$sidebar-height});
+}
+@function calcMainHeight(
+	$panel-height: $panel-header-height,
+	$tools-height: $tools-header-height,
+	$setting-height: $paper-settings-height-default
+) {
+	@return calc(100vh - #{$panel-height} - #{$tools-height} - #{$setting-height});
+}
+@function calcParentBgImageHeight($marginImg, $setting-height: $paper-settings-height-default) {
+	@return calc(#{$setting-height} - (#{$marginImg} * 2));
+}

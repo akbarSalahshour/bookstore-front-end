@@ -1,45 +1,22 @@
-
-
+/*-----------------------------BREAKPOINT SCREEN------------------------------*/
 $breakpoint-xs-default: 545px !default;
 $breakpoint-sm-default: 767px !default;
 $breakpoint-md-default: 992px !default;
 $breakpoint-lg-default: 1200px !default;
 
-$breakpoint-default:(
-    "-lg": "(min-width: #{$breakpoint-lg-default + 1})",
-    "-md": "(min-width: #{$breakpoint-md-default + 1}) and (max-width: #{$breakpoint-lg-default})",
-    "-sm": "(min-width: #{$breakpoint-sm-default + 1}) and (max-width: #{$breakpoint-md-default})",
-    "-xs": "(min-width: #{$breakpoint-xs-default + 1}) and (max-width: #{$breakpoint-sm-default})",
-    "-mo": "(max-width: #{$breakpoint-xs-default})"
+$breakpoint-default: (
+	"-lg": "(min-width: #{$breakpoint-lg-default + 1})",
+	"-md": "(min-width: #{$breakpoint-md-default + 1}) and (max-width: #{$breakpoint-lg-default})",
+	"-sm": "(min-width: #{$breakpoint-sm-default + 1}) and (max-width: #{$breakpoint-md-default})",
+	"-xs": "(min-width: #{$breakpoint-xs-default + 1}) and (max-width: #{$breakpoint-sm-default})",
+	"-mo": "(max-width: #{$breakpoint-xs-default})",
 ) !default;
 
-$direction-default:(
-    '-top',
-    '-right',
-    '-bottom',
-    '-left',
-    '-x',
-    '-y',
-) !default;
+/*-----------------------------DIRECTION FOR BORDER MARGIN PADDING AND ... ------------------------------*/
+$direction-default: ("-top", "-right", "-bottom", "-left", "-x", "-y") !default;
 
-$font-size-default:30 !default;
+/*-----------------------------PAPER BACKGROUND IMAGE------------------------------*/
+$page-bg-default: ("bg-dot", "bg-line", "bg-squre", "bg-white") !default;
 
-$color-default:(
-    'primary':#007bff,
-    'secondary':#6c757d,
-    'success':#28a745,
-    'danger':#dc3545,
-    'warning':#ffc107,
-    'info':#17a2b8,
-    'light':#f8f9fa,
-    'dark':#343a40,
-    'muted':#6c757d,
-    'white':#ffffff,
-) !default;
-
-$page-bg-default:(
-	'dot',
-	'line',
-	'squre',
-	'white',
-) !default;
+/*-----------------------------PAPER PANEL------------------------------*/
+$paper-settings-height-default: 100px !default;

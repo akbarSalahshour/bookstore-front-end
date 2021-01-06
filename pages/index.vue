@@ -11,7 +11,7 @@
           >
             <b-col class="category-box mx-auto text-center">
               <img
-                :src="require(`@/assets/img/category${index}.png`)"
+                :src="categoryImage(index)"
                 alt="category.title"
                 ref="categoryImg"
               />
@@ -97,6 +97,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  layout: "index",
   data() {
     return {
       categoryIndex: -1,
@@ -119,8 +120,11 @@ export default {
     selectList(id) {},
     createProject(evt) {
       if (this.projectName == "") this.errorProjectName = true;
-      else this.$router.push('/project')
+      else this.$router.push("/project");
       evt.preventDefault();
+    },
+    categoryImage(index) {
+      return require(`@/assets/img/category${index}.png`);
     },
   },
   mounted() {

@@ -68,8 +68,8 @@
 /***********************************************PAGES************************************************/
 @mixin page-bg() {
 	@each $bg-type in $page-bg-default {
-		&.bg-#{$bg-type} {
-			background-image: url("~assets/img/bg-#{$bg-type}.png");
+		&.#{$bg-type} {
+			background-image: url("~assets/img/#{$bg-type}.png");
 		}
 	}
 }

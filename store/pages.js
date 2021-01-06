@@ -26,10 +26,10 @@ export const state = () => ({
 		fontSize: '14px',
 	},
 	backgroundImage: [
-		'white',
-		'dot',
-		'line',
-		'squre',
+		'bg-white',
+		'bg-dot',
+		'bg-line',
+		'bg-squre',
 	]
 });
 export const getters = {
@@ -41,6 +41,7 @@ export const getters = {
 		return id;
 	},
 	getSelectedPage: (state) => state.pages.find(p => p.id === state.selectedId),
+	getSelectId: (state) => state.selectedId,
 	getSetting: (state) => state.setting,
 	getBackgroundImage: (state) => state.backgroundImage
 };
@@ -51,22 +52,19 @@ export const mutations = {
 	changeSelected(state, id) {
 		state.selectedId = id;
 	},
-	updateBI(state, backgroundImage) {
-		const findIndex=state.pages.findIndex(p => p.id === state.selectedId);
-		let newPages={...state.pages};
-		newPages[findIndex].style.background = backgroundImage;
+	updatePages(state, itemUpdate) {
+		const findIndex = state.pages.findIndex(p => p.id === state.selectedId);
+		let newPages = { ...state.pages };
+		if (itemUpdate.subKey)
+			newPages[findIndex][itemUpdate.key][itemUpdate.subKey] = itemUpdate.value;
+		else
+			newPages[findIndex][itemUpdate.key] = itemUpdate.value;
 	},
-	updateText(state, text) {
-		const findIndex=state.pages.findIndex(p => p.id === state.selectedId);
-		let newPages={...state.pages};
-		newPages[findIndex].text = text;
-	}
 }
 export const actions = {
 	createPage({ commit, getters }) {
 		const id = getters['getLastPage'] + 1;
 		commit('createPage', defaultPage(id));
 		commit('changeSelected', id);
-		return id;
 	},
 }

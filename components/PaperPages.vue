@@ -1,14 +1,18 @@
 <template>
   <b-row class="m-0">
     <b-col
-      id="project_tools_top"
+      id="project_tools_header"
       cols="12"
-      class="font-20em border-bottom m-0 d-flex p-0"
+      class="font-16em border-bottom m-0 d-flex p-0"
     >
-      <div class="active">
-        <i class="far fa-clipboard mx-2"></i>
+      <div
+        v-for="(icon, index) in menuIconTop"
+        :key="index"
+        :class="['p-1', { active: slectMenuTop == index }]"
+        @click="slectMenuTop = index"
+      >
+        <i :class="[...icon, 'mx-2']"></i>
       </div>
-      <div><i class="fas fa-file-alt mx-2"></i></div>
     </b-col>
     <b-col id="project_menu_top" cols="12" class="border-bottom bg-light px-2">
       <div class="d-flex">
@@ -36,7 +40,7 @@
           'border',
           'p-2',
           'rounded-5',
-          `bi-${selectedPage.style.background}`,
+          selectedPage.style.background,
         ]"
         :style="setting"
         @scroll="scrollTextarea"
@@ -55,6 +59,11 @@ export default {
     return {
       selectBI: "white",
       valueTextarea: "",
+      slectMenuTop: 0,
+      menuIconTop: [
+        ["fas", "fa-sliders-h"],
+        ["far", "fa-clipboard"],
+      ],
     };
   },
   methods: {
@@ -62,17 +71,26 @@ export default {
       alert("متن مورد نظر از یک صفحه بیشتر است!!");
     },
     changeTextarea() {
-      this.$store.commit("pages/updateText", this.valueTextarea);
+	  let param={
+		  key:'text',
+		  value:this.valueTextarea
+	  }
+      this.$store.commit("pages/updatePages", param);
     },
     backgroundImg(src) {
-      return require(`@/assets/img/bg-${src}.png`);
+      return require(`@/assets/img/${src}.png`);
     },
     altImg(src) {
       return `Background ${src}`;
     },
     changeBackgroundImage(src) {
-      this.selectBI = src;
-      this.$store.commit("pages/updateBI", src);
+	  this.selectBI = src;
+	  let param={
+		  key:'style',
+		  subKey:'background',
+		  value:src
+	  }
+      this.$store.commit("pages/updatePages", param);
     },
   },
   watch: {
@@ -93,7 +111,12 @@ export default {
 
 <style lang="scss">
 @import "~assets/scss/mixins.scss";
-#project_tools_top {
+@import "~assets/scss/functions.scss";
+@import "~assets/scss/variable.scss";
+$marginXBgImage: 10px;
+#project_tools_header {
+  height: $tools-header-height;
+  overflow: hidden;
   & > div {
     border-left: 1px solid #ddd;
     cursor: pointer;
@@ -104,12 +127,12 @@ export default {
   }
 }
 #project_menu_top {
-  height: 100px;
+  height: $paper-settings-height-default;
   .parent-bg-image {
-    height: 80px;
+    height: calcParentBgImageHeight($marginXBgImage);
     width: 100px;
     overflow: hidden;
-    margin: 10px 5px;
+    margin: $marginXBgImage 5px;
     border: 1px solid #cccccc;
     border-radius: 3px;
     opacity: 0.5;
@@ -127,7 +150,7 @@ export default {
   }
 }
 #project_main_box {
-  height: calc(100vh - 47px - 150px);
+  height: calcMainHeight();
   #main_page {
     font-size: 0.8em;
     line-height: 2.8em;
@@ -139,13 +162,13 @@ export default {
     border: 0;
     resize: none;
     overflow: hidden;
-    &.bi-dot {
+    &.bg-dot {
       background-size: 8px 100%, 100% 2.8em;
     }
-    &.bi-line {
+    &.bg-line {
       background-size: 100%, 100% 2.8em;
     }
-    &.bi-squre {
+    &.bg-squre {
       background-size: 30px 100%, 100% 2.8em;
       background-repeat: repeat;
       background-image: linear-gradient(

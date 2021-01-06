@@ -1,13 +1,19 @@
-$primary:#007bff;
-$secondary:#6c757d;
-$success:#28a745;
-$danger:#dc3545;
-$warning:#ffc107;
-$info:#17a2b8;
-$light:#f8f9fa;
-$lightgray:#dddddd;
-$dark:#343a40;
-$darkMuted:#595a5a;
-$muted:#979797;
-$white:#ffffff;
-$pink:#e2e0dc;
+$primary: #007bff;
+$secondary: #6c757d;
+$success: #28a745;
+$danger: #dc3545;
+$warning: #ffc107;
+$info: #17a2b8;
+$light: #f8f9fa;
+$lightgray: #dddddd;
+$dark: #343a40;
+$darkMuted: #595a5a;
+$muted: #979797;
+$white: #ffffff;
+$pink: #e2e0dc;
+
+/*-----------------------------PAPER PANEL------------------------------*/
+$panel-header-height: 47px;
+$sidebar-header-width: 275px;
+$sidebar-header-height: 35px;
+$tools-header-height: 47px;

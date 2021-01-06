@@ -1,5 +1,9 @@
 <template>
-  <div id="top_panel" class="px-2 py-1 border-bottom bg-light" ref="top_panel">
+  <div
+    id="panet_header"
+    class="px-2 py-1 border-bottom bg-light"
+    ref="top_panel"
+  >
     <b-row>
       <b-col cols="6" class="parent-top-right-parnel">
         <i class="fas fa-arrow-alt-circle-right"></i>
@@ -22,14 +26,17 @@
 
 <style lang="scss">
 @import "@/assets/scss/variable.scss";
-.parent-top-right-parnel i {
-  display: inline-flex;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-  font-size: 18px;
-  color: $darkMuted;
-  margin: auto 5px;
-  cursor: pointer;
+#panet_header {
+  height: $panel-header-height;
+  .parent-top-right-parnel i {
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    font-size: 18px;
+    color: $darkMuted;
+    margin: auto 5px;
+    cursor: pointer;
+  }
 }
 </style>
