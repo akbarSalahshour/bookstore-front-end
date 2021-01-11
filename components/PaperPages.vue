@@ -1,5 +1,6 @@
 <template>
   <b-row class="m-0">
+    <!-- آیکون های طراحی دفتر -->
     <b-col
       id="project_tools_header"
       cols="12"
@@ -8,24 +9,31 @@
       <div
         v-for="(icon, index) in menuIconTop"
         :key="index"
-        :class="['p-1', { active: slectMenuTop == index }]"
+        :class="['cursor-pointer', 'p-1', { active: slectMenuTop == index }]"
         @click="slectMenuTop = index"
       >
         <i :class="[...icon, 'mx-2']"></i>
       </div>
     </b-col>
+    <!-- آیکون های طراحی دفتر -->
+    <!-- کادر زیر آیکون ها طراحی -->
     <b-col id="project_menu_top" cols="12" class="border-bottom bg-light px-2">
       <div class="d-flex">
         <div
           v-for="src in backgroundImages"
           :key="src"
-          :class="['parent-bg-image', { active: src === selectBI }]"
+          :class="[
+            'parent-bg-image',
+            { active: src === selecteBackgroundImage },
+          ]"
           @click="changeBackgroundImage(src)"
         >
           <img :src="backgroundImg(src)" :alt="altImg(src)" />
         </div>
       </div>
     </b-col>
+    <!-- کادر زیر آیکون ها طراحی -->
+    <!-- کادر اصلی -->
     <b-col
       id="project_main_box"
       cols="12"
@@ -57,7 +65,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      selectBI: "white",
+      selecteBackgroundImage: "white",
       valueTextarea: "",
       slectMenuTop: 0,
       menuIconTop: [
@@ -67,14 +75,16 @@ export default {
     };
   },
   methods: {
+    // متن از ارتفاع دفترچه بیشتر باشد
     scrollTextarea() {
       alert("متن مورد نظر از یک صفحه بیشتر است!!");
     },
+    // آپدیت متن داخل دفترچه
     changeTextarea() {
-	  let param={
-		  key:'text',
-		  value:this.valueTextarea
-	  }
+      let param = {
+        key: "text",
+        value: this.valueTextarea,
+      };
       this.$store.commit("pages/updatePages", param);
     },
     backgroundImg(src) {
@@ -83,17 +93,19 @@ export default {
     altImg(src) {
       return `Background ${src}`;
     },
+    // آپدیت عکس پس زمینه دفترچه
     changeBackgroundImage(src) {
-	  this.selectBI = src;
-	  let param={
-		  key:'style',
-		  subKey:'background',
-		  value:src
-	  }
+      this.selecteBackgroundImage = src;
+      let param = {
+        key: "style",
+        subKey: "background",
+        value: src,
+      };
       this.$store.commit("pages/updatePages", param);
     },
   },
   watch: {
+    //تغییر متن دفترچه با انتخاب صفحه
     selectedPage(value) {
       this.valueTextarea = value.text;
     },
@@ -119,7 +131,6 @@ $marginXBgImage: 10px;
   overflow: hidden;
   & > div {
     border-left: 1px solid #ddd;
-    cursor: pointer;
     &.active {
       background-color: #eaebec;
       cursor: unset;
@@ -128,6 +139,7 @@ $marginXBgImage: 10px;
 }
 #project_menu_top {
   height: $paper-settings-height-default;
+  //تگ پدر عکس های بک گراند
   .parent-bg-image {
     height: calcParentBgImageHeight($marginXBgImage);
     width: 100px;
@@ -151,6 +163,7 @@ $marginXBgImage: 10px;
 }
 #project_main_box {
   height: calcMainHeight();
+  //کادر اصلی
   #main_page {
     font-size: 0.8em;
     line-height: 2.8em;
@@ -162,12 +175,15 @@ $marginXBgImage: 10px;
     border: 0;
     resize: none;
     overflow: hidden;
+    //بک گراند نقطه چین باشد
     &.bg-dot {
       background-size: 8px 100%, 100% 2.8em;
     }
+    //بک گراند لایه باشد
     &.bg-line {
       background-size: 100%, 100% 2.8em;
     }
+    //بک گراند شطرنجی باشد
     &.bg-squre {
       background-size: 30px 100%, 100% 2.8em;
       background-repeat: repeat;

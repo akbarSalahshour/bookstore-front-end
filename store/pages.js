@@ -7,7 +7,7 @@ function defaultPage(id) {
 		text: 'متن صفحه',
 		style: {
 			background: 'white',
-			font_size: '3cm'
+			fontSize: '3cm'
 		}
 	}
 	return page;
@@ -34,7 +34,6 @@ export const state = () => ({
 });
 export const getters = {
 	getpages: (state) => state.pages,
-	getLength: (state) => state.pages.length,
 	getLastPage: (state) => {
 		const lastItem = state.pages.slice(state.pages.length - 1)[0];
 		const id = lastItem ? lastItem.id : 0;

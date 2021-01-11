@@ -4,6 +4,7 @@
     <div id="project_container">
       <div class="project-sidebar border-left">
         <panel-sidebar>
+          <!-- قسمت هدر سایدبار -->
           <b-row
             slot="slider_header"
             id="sidebar_header"
@@ -12,17 +13,19 @@
             <b-col cols="6">صفحات</b-col>
             <b-col
               cols="6"
-              class="text-left text-primary cpo"
+              class="text-left text-primary cursor-pointer"
               @click="createPage"
             >
               <i class="far fa-file font-14"></i>
               ایجاد صفحه جدید
             </b-col>
           </b-row>
+          <!-- قسمت هدر سایدبار -->
+          <!-- صفحات ساخته شده-->
           <b-col
             slot="slider_main"
             cols="6"
-            class="d-inline-block my-2 cpo"
+            class="d-inline-block my-2 cursor-pointer"
             :title="page.text"
             v-for="page in pages"
             :key="page.id"
@@ -49,6 +52,7 @@
               >{{ page.name }}
             </span>
           </b-col>
+          <!-- صفحات ساخته شده-->
         </panel-sidebar>
       </div>
       <div id="project_pages">

@@ -2,10 +2,11 @@
   <main>
     <b-container>
       <div id="animate_line_under" class="col-12 mx-auto my-5 overflow-auto">
+		<!-- کادر بالا -->
         <b-row class="flex-nowrap">
           <b-col
             @click="changeCategory($event, index)"
-            class="animate-item cpo"
+            class="animate-item cursor-pointer"
             v-for="index in 5"
             :key="index"
           >
@@ -31,17 +32,20 @@
             </b-col>
           </b-col>
         </b-row>
+		<!-- کادر بالا -->
+		<!-- خط بین کادرها -->
         <b-row class="parent-line position-relative rounded-5 my-4">
           <div ref="animateLine" class="line bg-info"></div>
         </b-row>
+		<!-- خط بین کادرها -->
+		<!-- کادر پایین -->
         <div v-for="category in 5" :key="category">
           <b-row v-if="categoryIndex == category">
             <b-col v-for="index in 5" :key="index" class="text-center">
               <div class="parent-list-img d-flex">
                 <img
                   v-b-modal.modal-center
-                  class="m-auto cpo"
-                  @click="selectList(index)"
+                  class="m-auto cursor-pointer"
                   :src="
                     require(`@/assets/img/list${
                       Math.floor(Math.random() * 5) + 1
@@ -51,7 +55,7 @@
                 />
               </div>
               <div class="font-12">
-                <h4 class="font-18 font-700 cpo" @click="selectList(index)">
+                <h4 class="font-18 font-700 cursor-pointer">
                   مربعی کوچک
                 </h4>
                 <div class="mb-3" dir="ltr">
@@ -63,6 +67,7 @@
             </b-col>
           </b-row>
         </div>
+		<!-- کادر پایین -->
       </div>
     </b-container>
     <template>
@@ -107,6 +112,7 @@ export default {
     };
   },
   methods: {
+	  //تغییر کادر پایین بر اساس انتخاب کادر بالا
     changeCategory(evt, index) {
       const tab = evt.target.closest(".animate-item");
       const line = this.$refs["animateLine"];
@@ -117,7 +123,6 @@ export default {
     getImage(path) {
       return require(path);
     },
-    selectList(id) {},
     createProject(evt) {
       if (this.projectName == "") this.errorProjectName = true;
       else this.$router.push("/project");
