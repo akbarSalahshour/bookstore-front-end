@@ -8,8 +8,11 @@
             <nuxt-link to="/" class="text-white d-inline-block py-2">
               صفحه اصلی
             </nuxt-link>
-            <nuxt-link to="/bookCover" class="text-white d-inline-block p-2 mx-2">
-				طراحی جلد کتاب
+            <nuxt-link
+              to="/bookCover"
+              class="text-white d-inline-block p-2 mx-2"
+            >
+              طراحی جلد کتاب
             </nuxt-link>
           </b-navbar-nav>
         </b-collapse>

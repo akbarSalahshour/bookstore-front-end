@@ -2,7 +2,7 @@
   <main>
     <b-container>
       <div id="animate_line_under" class="col-12 mx-auto my-5 overflow-auto">
-		<!-- کادر بالا -->
+        <!-- کادر بالا -->
         <b-row class="flex-nowrap">
           <b-col
             @click="changeCategory($event, index)"
@@ -32,13 +32,13 @@
             </b-col>
           </b-col>
         </b-row>
-		<!-- کادر بالا -->
-		<!-- خط بین کادرها -->
+        <!-- کادر بالا -->
+        <!-- خط بین کادرها -->
         <b-row class="parent-line position-relative rounded-5 my-4">
           <div ref="animateLine" class="line bg-info"></div>
         </b-row>
-		<!-- خط بین کادرها -->
-		<!-- کادر پایین -->
+        <!-- خط بین کادرها -->
+        <!-- کادر پایین -->
         <div v-for="category in 5" :key="category">
           <b-row v-if="categoryIndex == category">
             <b-col v-for="index in 5" :key="index" class="text-center">
@@ -55,9 +55,7 @@
                 />
               </div>
               <div class="font-12">
-                <h4 class="font-18 font-700 cursor-pointer">
-                  مربعی کوچک
-                </h4>
+                <h4 class="font-18 font-700 cursor-pointer">مربعی کوچک</h4>
                 <div class="mb-3" dir="ltr">
                   <div>10×10 in</div>
                   <div>(20×20 cm)</div>
@@ -67,7 +65,7 @@
             </b-col>
           </b-row>
         </div>
-		<!-- کادر پایین -->
+        <!-- کادر پایین -->
       </div>
     </b-container>
     <template>
@@ -112,7 +110,7 @@ export default {
     };
   },
   methods: {
-	  //تغییر کادر پایین بر اساس انتخاب کادر بالا
+    //تغییر کادر پایین بر اساس انتخاب کادر بالا
     changeCategory(evt, index) {
       const tab = evt.target.closest(".animate-item");
       const line = this.$refs["animateLine"];
@@ -124,6 +122,7 @@ export default {
       return require(path);
     },
     createProject(evt) {
+      //اگر نام پروژه را وارد نکرده باشد
       if (this.projectName == "") this.errorProjectName = true;
       else this.$router.push("/project");
       evt.preventDefault();
@@ -133,7 +132,9 @@ export default {
     },
   },
   mounted() {
+    //زمان لود اولین دسته از کادر بالا انتخاب شود
     this.$refs["categoryImg"][0].click();
+    //
     this.projectId = localStorage.getItem("BookstoreProjectId");
   },
   computed: {
@@ -146,6 +147,7 @@ export default {
 <style lang="scss">
 @import "@/assets/scss/variable.scss";
 #animate_line_under {
+  //اندازه خط بین دو کادر
   $border: 6px;
   $borderRadius: 5px;
   .category-box {
@@ -156,6 +158,7 @@ export default {
       object-fit: contain;
     }
   }
+  //خط بین دو کادر
   .parent-line {
     border-bottom: $border solid $pink;
     border-radius: $borderRadius;

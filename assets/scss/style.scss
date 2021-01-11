@@ -18,16 +18,10 @@ a {
 	}
 }
 
-.cpo {
-	cursor: pointer !important;
+input[type="number"] {
+	direction: ltr !important;
 }
 
-.outline-none {
-	outline: none !important;
-}
-.border-none {
-	border: none;
-}
 @include font-size();
 @include font-weight();
 @include rounded();
@@ -37,6 +31,35 @@ a {
 	}
 }
 
+//-----------------------------background--------------------------------
+.background-size-100 {
+	background-size: 100% 100%;
+}
+
+//-----------------------------color--------------------------------
+.chrome-picker-box {
+	left: 0;
+	top: 100%;
+	z-index: 99999;
+	max-width: 200%;
+	display:none;
+	input{
+		direction: ltr;
+	}
+	&.active{
+		display:block;
+	}
+}
+
+//-----------------------------outline--------------------------------
+.outline-none {
+	outline: none !important;
+}
+//-----------------------------border--------------------------------
+.border-none {
+	border: none;
+}
+//-----------------------------scroll--------------------------------
 .scroll-hide::-webkit-scrollbar {
 	display: none;
 }
@@ -52,7 +75,30 @@ a {
 	background-color: #ececec;
 }
 
+//-----------------------------overflow--------------------------------
 .overflow-y {
 	overflow-y: auto;
 	overflow-x: hidden;
+}
+//-----------------------------cursor--------------------------------
+.cursor-pointer {
+	cursor: pointer;
+}
+.cursor-move {
+	cursor: move;
+}
+.cursor-alias {
+	cursor: alias;
+}
+.cursor-grab {
+	cursor: move;
+	cursor: grab;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
+}
+.cursor-grab:active,
+.cursor-grabbing {
+	cursor: grabbing;
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing;
 }

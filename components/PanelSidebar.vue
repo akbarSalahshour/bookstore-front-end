@@ -2,7 +2,7 @@
   <div>
     <slot name="slider_header" />
     <div id="container_sidebar" class="webkit-scrollbar overflow-y m-0">
-		<slot name="slider_main"/>
+      <slot name="slider_main" />
     </div>
   </div>
 </template>
